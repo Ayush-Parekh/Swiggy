@@ -1,6 +1,6 @@
 import { Routes , Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Body from "./components/body";
+import Body from "./components/Body";
 import RestaurantMenu from "./components/RestaurantMenu";
 
 function App() {
