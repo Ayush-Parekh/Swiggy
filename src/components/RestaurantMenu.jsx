@@ -54,6 +54,7 @@ function RestaurantMenu() {
                             <div className='gap-2 flex flex-col text-sm'>
                                 <p className='font-bold'>Outlet  <span className='text-gray-400 font-medium'>{resData?.locality}</span></p>
                                 <p className='font-bold text-sm'>{resData?.sla?.slaString}</p>
+                                <p></p>
                             </div>
                         </div> 
                     </div>
