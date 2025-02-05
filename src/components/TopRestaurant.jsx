@@ -28,9 +28,9 @@ function TopRestaurant({data}) {
         style={{translate:`-${value}%`}}
         >
             {
-                data.map(({info,cta : {link}})=>(
+                data.map(({info,cta : {link}},index)=>(
                 <div 
-                key={"info?.externalRatings?.id"}
+                key={index}
                 className='hover:scale-91 duration-300'>
                     <Card {...info} link={link}/>
                 </div>

@@ -26,9 +26,9 @@ function Onyourmind({data}) {
         style={{translate:`-${value}%`}}
         className={`flex mt-4 duration-500`}  >
             {
-                data.map((item)=>(
+                data.map((item,index)=>(
                     <img 
-                    key={item.imageId}
+                    key={index}
                     className='w-32 ' src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/${item.imageId}`} alt="" />
                 ))
             }

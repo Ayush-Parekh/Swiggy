@@ -7,9 +7,9 @@ function Onlinefood({data}) {
             <div className='grid grid-cols-4 gap-5'>
                         
             {
-                data.map(({info,cta : {link}})=>(
+                data.map(({info,cta : {link}} ,index)=>(
                 <div 
-                key={"info?.externalRatings?.id"}
+                key={index}
                 className='hover:scale-91 duration-300'>
                     <Card {...info} link={link}/>
                 </div>
