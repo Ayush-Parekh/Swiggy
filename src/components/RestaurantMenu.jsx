@@ -6,6 +6,13 @@ function RestaurantMenu() {
     const [menuData,setMenuData]=useState([])
     const [resData,setresData]=useState([])
     const [distData,setdistData]=useState([])
+    const [value,setValue]=useState(0);
+    function handlePrev(){
+        value<=0?"":setValue((prev)=>prev-28)
+    }
+    function handleNext(){
+        value>=112?"":setValue((prev)=>prev+28)
+    }
     const {id}=useParams();
     console.log(resData);
     
@@ -58,8 +65,21 @@ function RestaurantMenu() {
                                     <p className='font-bold text-sm'>{resData?.sla?.slaString}</p>
                                 </div>
                             
-                        </div> 
-                        <hr className='mt-3' />
+                            </div>
+                            
+                        </div>
+                        <div className='flex justify-between mt-5 pt-4'>
+                            <h1 className='font-bold text-xl'>Deals for you</h1>
+                            
+                            <div className='flex gap-2'>
+                                <div onClick={handlePrev} className={`cursor-pointer rounded-full w-9 h-9 flex justify-center ` +(value<=0?" bg-gray-100": "bg-gray-300")}>
+                                    <i className={`fi text-2xl mt-1      fi-rr-arrow-small-left ` + (value<=0?"text-gray-300":"text-gray-800")}></i>
+                                </div>
+                                <div onClick={handleNext}className={`cursor-pointer rounded-full w-9 h-9 flex justify-center ` +(value>=112?" bg-gray-100 ": " bg-gray-300 ")}>
+                                    <i className={`fi text-2xl mt-1 fi-rr-arrow-small-right ` + (value>=112 ? " text-gray-300":" text-gray-800")}></i>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
