@@ -36,27 +36,31 @@ function RestaurantMenu() {
                 </p>
                 <h1 className='text-2xl pt-8 font-bold'>{resData.name}</h1>
                 <div className='w-full h-[206px] bg-gradient-to-t from-gray-300/70 mt-3 px-4 pb-4 rounded-[30px]'>
-                    <div className='w-full rounded-[20px] border border-gray-300/70 h-full bg-white p-4'>
-                        <div className='flex items-center gap-1 font-bold'>
-                            <i class="fi fi-ss-circle-star mt-1 text-green-700 text-lg"></i>
-                            <span>{resData?.avgRating}</span>
-                            <span>({resData?.totalRatingsString})</span>
-                            <span>.</span>
-                            <span>{resData?.costForTwoMessage}</span>
-                        </div>
-                        <p className='font-bold text-red-600 underline'>{resData?.cuisines?.join(", ")}</p>
-                        <div className='flex mt-3 gap-3'>
-                            <div className='flex justify-center mt-2 flex-col items-center w-[4px]'>
-                                <div className='w-1.5 h-1.5 bg-gray-300 rounded-full'> </div>
-                                <div className='w-[0.5px] h-[30px] bg-gray-300'> </div>
-                                <div className='w-1.5 h-1.5 bg-gray-300 rounded-full'></div>
+                    <div className='w-full rounded-[20px] border border-gray-300/70 h-full bg-white'>
+                        <div className='w-full h-full p-4'>
+                                
+                            <div className='flex items-center gap-1 font-bold'>
+                                <i className="fi fi-ss-circle-star mt-1 text-green-700 text-lg"></i>
+                                <span>{resData?.avgRating}</span>
+                                <span>({resData?.totalRatingsString})</span>
+                                <span>.</span>
+                                <span>{resData?.costForTwoMessage}</span>
                             </div>
-                            <div className='gap-2 flex flex-col text-sm'>
-                                <p className='font-bold'>Outlet  <span className='text-gray-400 font-medium'>{resData?.locality}</span></p>
-                                <p className='font-bold text-sm'>{resData?.sla?.slaString}</p>
-                                <p></p>
-                            </div>
+                            <p className='font-bold text-red-600 underline'>{resData?.cuisines?.join(", ")}</p>
+                            <div className='flex mt-3 gap-3'>
+                                <div className='flex justify-center mt-2 flex-col items-center w-[4px]'>
+                                    <div className='w-1.5 h-1.5 bg-gray-300 rounded-full'> </div>
+                                    <div className='w-[0.5px] h-[30px] bg-gray-300'> </div>
+                                    <div className='w-1.5 h-1.5 bg-gray-300 rounded-full'></div>
+                                </div>
+                                <div className='gap-2 flex flex-col text-sm'>
+                                    <p className='font-bold'>Outlet  <span className='text-gray-400 font-medium'>{resData?.locality}</span></p>
+                                    <p className='font-bold text-sm'>{resData?.sla?.slaString}</p>
+                                </div>
+                            
                         </div> 
+                        <hr className='mt-3' />
+                        </div>
                     </div>
                 </div>
             </div>
