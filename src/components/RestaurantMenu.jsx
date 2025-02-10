@@ -8,13 +8,13 @@ function RestaurantMenu() {
     const [distData,setdistData]=useState([])
     const [value,setValue]=useState(0);
     function handlePrev(){
-        value<=0?"":setValue((prev)=>prev-28)
+        value<=0?"":setValue((prev)=>prev-41)
     }
     function handleNext(){
-        value>=112?"":setValue((prev)=>prev+28)
+        value>=123?"":setValue((prev)=>prev+41)
     }
     const {id}=useParams();
-    console.log(resData);
+    // console.log(resData);
     
     const mainId=id.split("-").at(-1).slice(4);
     async function fetchMenu() {
@@ -41,8 +41,8 @@ function RestaurantMenu() {
                      / 
                     <span className='text-slate-800'>{resData?.name}</span>
                 </p>
-                <h1 className='text-2xl pt-8 font-bold'>{resData.name}</h1>
-                <div className='w-full h-[206px] bg-gradient-to-t from-gray-300/70 mt-3 px-4 pb-4 rounded-[30px]'>
+                <h1 className='text-2xl pt-8 font-bold pl-2'>{resData.name}</h1>
+                <div className='w-full h-[180px] bg-gradient-to-t from-gray-300/70 mt-3 px-4 pb-4 rounded-[30px]'>
                     <div className='w-full rounded-[20px] border border-gray-300/70 h-full bg-white'>
                         <div className='w-full h-full p-4'>
                                 
@@ -68,21 +68,60 @@ function RestaurantMenu() {
                             </div>
                             
                         </div>
-                        <div className='flex justify-between mt-5 pt-4'>
-                            <h1 className='font-bold text-xl'>Deals for you</h1>
-                            
-                            <div className='flex gap-2'>
-                                <div onClick={handlePrev} className={`cursor-pointer rounded-full w-9 h-9 flex justify-center ` +(value<=0?" bg-gray-100": "bg-gray-300")}>
-                                    <i className={`fi text-2xl mt-1      fi-rr-arrow-small-left ` + (value<=0?"text-gray-300":"text-gray-800")}></i>
-                                </div>
-                                <div onClick={handleNext}className={`cursor-pointer rounded-full w-9 h-9 flex justify-center ` +(value>=112?" bg-gray-100 ": " bg-gray-300 ")}>
-                                    <i className={`fi text-2xl mt-1 fi-rr-arrow-small-right ` + (value>=112 ? " text-gray-300":" text-gray-800")}></i>
-                                </div>
-                            </div>
+                        <div className='w-full overflow-hidden'>
 
+                            <div className='flex justify-between mt-5 pt-4'>
+                                <h1 className='font-bold text-xl'>Deals for you</h1>
+                                
+                                <div
+                                 className='flex gap-2'>
+                                    <div onClick={handlePrev} className={`cursor-pointer rounded-full w-9 h-9 flex justify-center ` +(value<=0?" bg-gray-100": "bg-gray-300")}>
+                                        <i className={`fi text-2xl mt-1      fi-rr-arrow-small-left ` + (value<=0?"text-gray-300":"text-gray-800")}></i>
+                                    </div>
+                                    <div onClick={handleNext}className={`cursor-pointer rounded-full w-9 h-9 flex justify-center ` +(value>=123?" bg-gray-100 ": " bg-gray-300 ")}>
+                                        <i className={`fi text-2xl mt-1 fi-rr-arrow-small-right ` + (value>=120 ? " text-gray-300":" text-gray-800")}></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div
+                            style={{translate:`-${value}%`}} 
+                            className='flex gap-4 mt-3 duration-500'>
+
+                            {
+                                distData.map((data,index)=>(
+                                    
+                                    <Discount key={index} data={data}/>
+                                    
+                                ))
+                                
+                            }
+                            </div>
                         </div>
+                        
+                        <h2 className='text-center mt-10'>Menu </h2>
+                        <div className='w-full mt-5'>
+                            <div className='w-full text-center p-3 rounded-xl font-bold text-gray-800/50 bg-gray-100'>Search For Dishes</div>
+                        </div>
+    
                     </div>
                 </div>
+            </div>
+           
+           
+        </div>
+    )
+}
+
+function Discount({data:{info:{header,couponCode,offerLogo}}}) {
+    // console.log();
+    
+    return (
+        <div className='flex min-w-[328px] border border-gray-300 gap-3 rounded-2xl h-[76px] p-3'>
+            <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_96,h_96/" + offerLogo} alt="" />
+            <div>
+                <h2 className='font-extrabold'>{header}</h2>
+                <p className='text-gray-400 text-sm font-bold'>{couponCode}</p>
             </div>
         </div>
     )
