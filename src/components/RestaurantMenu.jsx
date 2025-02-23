@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { data, useParams , Link} from 'react-router-dom'
 
 function RestaurantMenu() {
-    const [menuData,setMenuData]=useState([])
+    const [menuData,setmenuData]=useState([])
     const [resData,setresData]=useState([])
     const [distData,setdistData]=useState([])
     const [value,setValue]=useState(0);
@@ -20,11 +20,13 @@ function RestaurantMenu() {
     async function fetchMenu() {
         let data = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&restaurantId=${mainId}&catalog_qa=undefined&submitAction=ENTER`)
         let res = await data.json();
-        // console.log(resInfo);
-        setMenuData(res?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card)
+        // console.log(menuData);
+        setmenuData(res?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card)
         setresData(res?.data?.cards[2]?.card?.card?.info)
         setdistData(res?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.offers)
-        
+        let actualmenu=(res?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards).filter((data)=>data)
+        console.log(actualmenu);
+    
     }
     useEffect(()=>{
         fetchMenu();
@@ -100,8 +102,9 @@ function RestaurantMenu() {
                         </div>
                         
                         <h2 className='text-center mt-10'>Menu </h2>
-                        <div className='w-full mt-5'>
+                        <div className='w-full mt-5 relative cursor-pointer'>
                             <div className='w-full text-center p-3 rounded-xl font-bold text-gray-800/50 bg-gray-100'>Search For Dishes</div>
+                            <i className={`fi fi-bs-search mt-1 right-4 top-2.5 absolute`}></i>
                         </div>
     
                     </div>
