@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Card(info) {
-    // console.log(info.);
     
 return (
     <Link to={`/restaurantmenu/${info.link.split("/")[5]}`}>
